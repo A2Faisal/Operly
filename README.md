@@ -1,6 +1,6 @@
 # Operly | Premium Support for Founders
 
-**Live Demo:** operly.org
+**Live Demo:** [operly.org](https://operly.org)
 
 Operly is a high-end, responsive agency website built for a Canada-based Virtual Assistant firm. It focuses on clean aesthetics, professional operational systems, and a seamless user experience for solo founders and growing businesses.
 
