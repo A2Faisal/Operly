@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { InlineWidget } from "react-calendly";
+
 
 const App = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -197,9 +199,11 @@ const App = () => {
               </div>
             </div>
             <div className="absolute -top-10 -right-10 w-64 h-64 bg-emerald-50 rounded-full mix-blend-multiply filter blur-3xl opacity-60"></div>
-            <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1000"
-              className="img-mask shadow-[0_32px_64px_-15px_rgba(0,0,0,0.2)] w-full object-cover aspect-[4/5] relative z-10"
-              alt="Operly Premium Workspace" />
+            <img 
+              src={process.env.PUBLIC_URL + '/team-hero.png'} 
+              className="rounded-[60px] opacity-90 shadow-2xl transition-all duration-700 ease-in-out group-hover:opacity-100 group-hover:scale-[1.02] group-hover:shadow-[0_20px_50px_rgba(6,78,59,0.3)]" 
+              alt="The Operly Team"
+            />
           </div>
         </section>
 
@@ -246,37 +250,99 @@ const App = () => {
           </div>
         </section>
 
-        {/* Services Section */}
+        {/* Services Section - The Intelligence & The Action */}
         <section id="services" className="max-w-7xl mx-auto px-6 py-32 border-t border-slate-100">
-          <div className="grid md:grid-cols-2 gap-16 mb-20 items-center">
-            <div className="reveal">
-              <h2 className="text-6xl font-medium mb-8 leading-tight text-slate-900 italic">Expertise <br />without the <br /><span className="italic serif text-emerald-600">overhead.</span></h2>
-              <p className="text-xl text-slate-600 leading-relaxed font-medium">Operly acts as your internal operations department. We don't wait for instructions; we suggest improvements and implement systems that scale.</p>
-            </div>
-            <div className="reveal">
-              <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000" className="rounded-[40px] shadow-2xl h-96 w-full object-cover" alt="Operational Excellence" />
-            </div>
+          <div className="text-center mb-20 reveal">
+            <h2 className="text-5xl font-medium mb-6 italic serif text-slate-900">Our Services.</h2>
+            <p className="text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed">
+              Operly acts as your internal operations department. We don't wait for instructions; we suggest improvements and implement systems that scale.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
-            {[
-              { title: "Communication Mastery", icon: "emerald", text: "We handle the gatekeeping. Inboxes are cleared, leads are nurtured, and urgent requests are prioritized before you even log in.", outcome: "Zero missed opportunities." },
-              { title: "Strategic Logistics", icon: "blue", text: "Travel booking, event coordination, and complex scheduling. We manage the puzzle so you can arrive prepared and focused.", outcome: "A protected schedule." },
-              { title: "Task Coordination", icon: "indigo", text: "Stay on track with clear deadline management across your business. We manage the 'doing' so you can stay in high-level thinking.", outcome: "Zero missed deadlines." },
-              { title: "Daily Operations Flow", icon: "amber", text: "Your business keeps moving even when you're offline. We manage reminders and team alignment checks.", outcome: "Sustainable momentum." }
-            ].map((service, idx) => (
-              <div key={idx} className="p-12 bg-white rounded-[40px] border border-slate-100 hover:shadow-xl transition-all duration-500 reveal group">
-                <div className={`w-14 h-14 bg-${service.icon}-100 rounded-2xl flex items-center justify-center mb-8 transition-transform group-hover:scale-110`}>
-                  <svg className={`w-6 h-6 text-${service.icon}-600`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                </div>
-                <h3 className="text-3xl font-bold mb-4 text-slate-900">{service.title}</h3>
-                <p className="text-slate-600 mb-10 text-lg leading-relaxed font-medium">{service.text}</p>
-                <div className="pt-6 border-t border-slate-100 flex items-center gap-3">
-                  <div className={`w-2 h-2 bg-${service.icon}-500 rounded-full animate-pulse`}></div>
-                  <p className={`font-bold text-${service.icon}-600 text-sm uppercase tracking-widest`}>Outcome: {service.outcome}</p>
+            {/* 1. Communication */}
+            <div className="p-12 bg-white rounded-[40px] border border-slate-100 hover:shadow-xl transition-all duration-500 reveal group">
+              <h3 className="text-3xl font-bold mb-4 text-slate-900">Communication Mastery</h3>
+              <p className="text-slate-600 mb-6 text-lg leading-relaxed font-medium">
+                We handle the gatekeeping. Our skilled associates manage call screening, corporate communication, email management, and proofreading. 
+              </p>
+              <div className="pt-6 border-t border-slate-100">
+                <p className="font-bold text-emerald-600 text-sm uppercase tracking-widest">
+                  Outcome: Zero missed opportunities.
+                </p>
+              </div>
+            </div>
+
+            {/* 2. Logistics */}
+            <div className="p-12 bg-white rounded-[40px] border border-slate-100 hover:shadow-xl transition-all duration-500 reveal group">
+              <h3 className="text-3xl font-bold mb-4 text-slate-900">Strategic Logistics</h3>
+              <p className="text-slate-600 mb-6 text-lg leading-relaxed font-medium">
+                Mastery over the complex. We handle global travel arrangements, event planning, and securing difficult reservations.
+              </p>
+              <div className="pt-6 border-t border-slate-100">
+                <p className="font-bold text-blue-600 text-sm uppercase tracking-widest">
+                  Outcome: A protected schedule.
+                </p>
+              </div>
+            </div>
+
+            {/* 3. Task/Project */}
+            <div className="p-12 bg-white rounded-[40px] border border-slate-100 hover:shadow-xl transition-all duration-500 reveal group">
+              <h3 className="text-3xl font-bold mb-4 text-slate-900">Project Coordination</h3>
+              <p className="text-slate-600 mb-6 text-lg leading-relaxed font-medium">
+                Stay on track with reporting, task management, document preparation, and proactive problem solving.
+              </p>
+              <div className="pt-6 border-t border-slate-100">
+                <p className="font-bold text-indigo-600 text-sm uppercase tracking-widest">
+                  Outcome: Zero missed deadlines.
+                </p>
+              </div>
+            </div>
+
+            {/* 4. Lifestyle */}
+            <div className="p-12 bg-white rounded-[40px] border border-slate-100 hover:shadow-xl transition-all duration-500 reveal group">
+              <h3 className="text-3xl font-bold mb-4 text-slate-900">Private Lifestyle Support</h3>
+              <p className="text-slate-600 mb-6 text-lg leading-relaxed font-medium">
+                Personal freedom through detail. Expense tracking, anniversary/birthday reminders, buying gifts, and arranging returns.
+              </p>
+              <div className="pt-6 border-t border-slate-100">
+                <p className="font-bold text-amber-600 text-sm uppercase tracking-widest">
+                  Outcome: Sustainable headspace.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Who We Help Section */}
+        <section className="bg-slate-900 text-white py-32 px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-20 items-center">
+              <div className="reveal">
+                <h2 className="text-5xl font-medium mb-8 italic serif">Who We <span className="text-emerald-400">Support.</span></h2>
+                <p className="text-xl text-slate-400 mb-12 font-medium leading-relaxed">
+                  Operly provides high-touch support for individuals whose time is their most valuable asset.
+                </p>
+                <div className="grid grid-cols-2 gap-y-6 gap-x-12">
+                  {[
+                    "Family Offices", "C-Suite Executives", 
+                    "High Net Worth Individuals", "Senior Partners", 
+                    "Entrepreneurs", "Executive Directors"
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
+                      <span className="text-sm font-bold uppercase tracking-widest text-slate-300">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
+              <div className="reveal">
+                <div className="relative group">
+                  <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000" className="rounded-[60px] opacity-70 group-hover:opacity-100 transition duration-700" alt="Executive Leadership" />
+                  <div className="absolute inset-0 rounded-[60px] ring-1 ring-inset ring-white/10"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -341,10 +407,10 @@ const App = () => {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="max-w-7xl mx-auto px-6 py-32 border-t border-slate-100">
+        <section id="contact" className="max-w-7xl mx-auto px-6 py-20 md:py-32 border-t border-slate-100">
           <div className="text-center mb-16 reveal">
-            <h2 className="text-6xl font-medium mb-6 text-slate-900 tracking-tight">Let’s reclaim <br />your headspace.</h2>
-            <div className="flex flex-wrap justify-center gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 border-y border-slate-100 py-6">
+            <h2 className="text-5xl md:text-6xl font-medium mb-6 text-slate-900 tracking-tight leading-tight">Let’s reclaim <br />your headspace.</h2>
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 border-y border-slate-100 py-6">
               {["Confidentiality as standard", "Direct partner access", "Private pricing guide post-call"].map((item, i) => (
                 <div key={i} className="flex items-center gap-2">
                   <div className="w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center">✓</div> {item}
@@ -353,103 +419,119 @@ const App = () => {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-16 max-w-6xl mx-auto text-left">
-            <div className="bg-white p-12 rounded-[40px] shadow-2xl border border-slate-100 reveal h-fit">
-              <form onSubmit={handleSubmit} id="contact-form" className="space-y-6">
+          {/* Grid adjusted: Form is narrower (col-span-5), Calendar is wider (col-span-7) */}
+          <div className="grid lg:grid-cols-12 gap-8 md:gap-12 max-w-7xl mx-auto items-stretch">
+            
+            {/* Left Column: Narrower & Longer Form */}
+            <div className="lg:col-span-5 bg-white p-8 md:p-12 rounded-[40px] shadow-2xl border border-slate-100 reveal flex flex-col justify-between">
+              <h3 className="text-3xl font-bold mb-8 italic serif text-slate-900">Send an Inquiry</h3>
+              <form onSubmit={handleSubmit} id="contact-form" className="space-y-8">
                 <div>
                   <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Your Name</label>
-                  <input type="text" required placeholder="John Doe" className="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-emerald-500 transition font-medium text-sm outline-none" />
+                  <input type="text" required placeholder="John Doe" className="w-full bg-slate-50 border-none rounded-2xl px-6 py-5 focus:ring-2 focus:ring-[#064e3b] transition font-medium text-sm outline-none" />
                 </div>
                 <div>
                   <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Email</label>
-                  <input type="email" required placeholder="john@company.com" className="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-emerald-500 transition font-medium text-sm outline-none" />
+                  <input type="email" required placeholder="john@company.com" className="w-full bg-slate-50 border-none rounded-2xl px-6 py-5 focus:ring-2 focus:ring-[#064e3b] transition font-medium text-sm outline-none" />
                 </div>
                 <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Interested In</label>
-                    <div className="relative">
-                        <select className="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-emerald-500 transition font-medium text-sm outline-none appearance-none cursor-pointer">
-                        <option>General Inquiry</option>
-                        <option>Pricing & Packages</option>
-                        <option>Free Consultation (60 mins)</option>
-                        <option>Dedicated VA Support</option>
-                        </select>
-                        {/* Custom Dropdown Arrow */}
-                        <div className="absolute inset-y-0 right-0 flex items-center px-6 pointer-events-none text-slate-400">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                        </div>
+                  <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Interested In</label>
+                  <div className="relative">
+                    <select className="w-full bg-slate-50 border-none rounded-2xl px-6 py-5 focus:ring-2 focus:ring-[#064e3b] transition font-medium text-sm outline-none appearance-none cursor-pointer">
+                      <option>General Inquiry</option>
+                      <option>Pricing & Packages</option>
+                      <option>Free Consultation (60 mins)</option>
+                      <option>Dedicated VA Support</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center px-6 pointer-events-none text-slate-400">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                     </div>
-                    </div>
-                <div>
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Current BottleNeck</label>
-                  <textarea rows="4" required className="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-emerald-500 transition font-medium resize-none text-sm outline-none" placeholder="Tell us what's keeping you busy..."></textarea>
+                  </div>
                 </div>
-                <button type="submit" className="w-full btn-vibrant py-5 rounded-2xl font-bold text-lg shadow-lg active:scale-95">Send Inquiry</button>
+                <div>
+                  <label className="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Current Bottleneck</label>
+                  <textarea rows="5" required className="w-full bg-slate-50 border-none rounded-2xl px-6 py-5 focus:ring-2 focus:ring-[#064e3b] transition font-medium resize-none text-sm outline-none" placeholder="Tell us what's keeping you busy..."></textarea>
+                </div>
+                <button type="submit" className="w-full btn-vibrant py-6 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition-all">Send Inquiry</button>
               </form>
-              <div id="success-msg" className="hidden text-center py-20 animate-in fade-in zoom-in duration-500">
+              <div id="success-msg" className="hidden text-center py-20">
                 <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">✓</div>
                 <h4 className="text-2xl font-bold mb-2">Message Sent</h4>
-                <p className="text-slate-500 font-medium">We'll be in touch with requested details within 24 hours.</p>
+                <p className="text-slate-500 font-medium text-sm">We'll be in touch within 24 hours.</p>
               </div>
             </div>
 
-            <div className="reveal h-full flex flex-col justify-center">
-              <div className="bg-white p-12 rounded-[40px] shadow-xl border-2 border-emerald-50/50">
-                <h3 className="text-3xl font-medium mb-6 leading-tight text-slate-900 tracking-tight">Direct Reach</h3>
-                <p className="text-slate-500 mb-10 text-lg leading-relaxed font-medium">Prefer direct communication? Reach our lead partners instantly via email.</p>
-                <button onClick={copyEmail} className="flex items-center gap-6 group p-5 rounded-[32px] bg-emerald-50/50 hover:bg-emerald-50 transition-all border border-emerald-100/50 w-full">
-                  <div className="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-emerald-600 group-hover:scale-110 transition">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                  </div>
-                  <div className="text-left">
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-600/60 mb-1">Email Our Team</p>
-                    <p className="text-2xl font-bold text-slate-900">admin@operly.org</p>
-                  </div>
-                </button>
+            {/* Right Column: Calendar Widget (Matching height) */}
+            <div className="lg:col-span-7 reveal">
+              <div className="bg-white rounded-[40px] border border-slate-100 shadow-xl overflow-hidden h-full flex flex-col">
+                <div className="p-8 border-b border-slate-50 bg-slate-50/30">
+                  <h3 className="text-2xl font-bold italic serif text-slate-900">Book Directly</h3>
+                  <p className="text-sm text-slate-500 font-medium">Select a time for your 30-minute discovery call.</p>
+                </div>
+                <div className="flex-grow min-h-[600px] lg:min-h-0">
+                  <InlineWidget 
+                    url="https://calendly.com/jannatulferdousi0012/30min"
+                    styles={{ 
+                      height: '700px', 
+                      width: '100%',
+                      marginTop: '-50px' 
+                    }}
+                    pageSettings={{
+                      backgroundColor: 'ffffff',
+                      hideEventTypeDetails: false,
+                      hideLandingPageDetails: true,
+                      primaryColor: '064e3b',
+                      textColor: '0f172a'
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
+
+          {/* Direct Reach Bar at bottom */}
+          <div className="mt-16 text-center reveal">
+            <div className="inline-flex flex-col md:flex-row items-center gap-6 bg-emerald-50/50 p-6 rounded-3xl border border-emerald-100">
+              <p className="text-slate-600 font-medium">Prefer direct communication?</p>
+              <button onClick={copyEmail} className="flex items-center gap-3 text-xl font-bold text-[#064e3b] hover:underline transition-all">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                admin@operly.org
+              </button>
+            </div>
+          </div>
         </section>
-      </main>
 
-      <footer className="bg-slate-900 text-white py-24 px-6 mt-20">
+      </main> {/* Closing the main tag correctly before footer starts */}
+
+      <footer className="bg-slate-900 text-white py-20 px-6 mt-10">
         <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 text-left">
-            <div className="md:col-span-2">
+          <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-8 cursor-pointer" onClick={goToHome}>
-                <div className="w-8 h-8 bg-emerald-500 rounded-lg"></div>
-                <span className="text-2xl font-bold tracking-tight">Operly</span>
+              <div className="w-8 h-8 bg-emerald-500 rounded-lg"></div>
+              <span className="text-2xl font-bold tracking-tight">Operly</span>
             </div>
-            <p className="text-slate-400 max-w-sm text-lg font-medium leading-relaxed">
-                Premium operational partnership for founders who value deep work over shallow admin.
-            </p>
-            </div>
-            
-            <div>
-            <h4 className="font-bold mb-8 text-emerald-400 uppercase text-[15px] tracking-[0.2em]">Region</h4>
-            <div className="space-y-2 text-slate-300 font-medium">
-                <p>Headquartered in Canada.</p>
-                <p>Serving Globally.</p>
-            </div>
-            </div>
-            
-            <div>
-            <h4 className="font-bold mb-8 text-emerald-400 uppercase text-[15px] tracking-[0.2em]">Legal</h4>
-            <div className="space-y-2 text-slate-300 text-sm font-medium">
-                <p>Confidentiality Assured.</p>
-                <p>Direct Partner Access.</p>
-                <p>Cancel Anytime.</p>
-            </div>
-            </div>
+            <p className="text-slate-400 max-w-sm text-lg leading-relaxed">Premium operational partnership for founders who value deep work over shallow admin.</p>
+          </div>
+          <div>
+            <h4 className="font-bold mb-8 text-emerald-400 uppercase text-xs tracking-widest">Region</h4>
+            <div className="space-y-2 text-slate-300"><p>Headquartered in Canada.</p><p>Serving Globally.</p></div>
+          </div>
+          <div>
+            <h4 className="font-bold mb-8 text-emerald-400 uppercase text-xs tracking-widest">Legal</h4>
+            <div className="space-y-2 text-slate-300 text-sm"><p>Confidentiality Assured.</p><p>Direct Partner Access.</p><p>Cancel Anytime.</p></div>
+          </div>
         </div>
-
-        <div className="max-w-7xl mx-auto border-t border-slate-800 mt-20 pt-10 text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>© 2025 OPERLY OPERATIONS LTD.</p>
-            <p className="italic">PREDICTABLE CALM. PROFESSIONAL SCALE.</p>
+        <div className="max-w-7xl mx-auto border-t border-slate-800 mt-16 pt-10 text-[10px] font-black uppercase tracking-widest text-slate-500 flex justify-between items-center">
+          <p>© 2025 OPERLY OPERATIONS LTD.</p>
+          <p className="italic">PREDICTABLE CALM.</p>
         </div>
-        </footer>
+      </footer>
     </div>
   );
 };
 
 export default App;
+
+
+
+
